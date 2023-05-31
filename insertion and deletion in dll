@@ -1,0 +1,141 @@
+
+    #\<---------------------------------------------CREATING NODE CLASS IN DOUBLY LINKEDLIST----------------------------------------------------->|
+
+class Node:
+    def __init__(self,data):  
+        self.data=data
+        self.next=None
+        self.prev=None
+        
+class DLL:
+    def __init__(self):
+        self.head=None
+        
+        
+    #\<------------------------------------------------DISPLAYING NODES IN DOUBLY LINKEDLIST----------------------------------------------------->|
+        
+        
+    def Display(self):
+        if self.head is None:
+            print("linked list is empty")
+        else:
+            temp=self.head
+            while temp:
+                print(temp.data,"-->",end=" ")
+                temp=temp.next
+                
+                
+    #\<-------------------------------------------------INSERTION IN DOUBLY LINKEDLIST----------------------------------------------------------->|
+                
+                
+                                                    #<--------INSERTION AT BEGINING-------->
+            
+    def insert_begining(self,data):
+        n1=Node(data)
+        temp=self.head
+        temp.prev=n
+        n.next=temp
+        self.head=n
+      
+                                                    #<--------INSERTION AT ENDING-------->
+            
+    def insert_ending(self,data):
+        n6=Node(data)
+        temp=self.head
+        while temp.next is not None:
+            temp=temp.next
+        temp.next=n6
+        n6.prev=temp
+    
+    
+                                                    #<--------INSERTION AT POSITION------->
+    
+    def insert_pos(self,pos,data):
+        n3=Node(60)
+        temp=self.head
+        for i in range(1,pos-1):
+            temp=temp.next
+        n3.prev=temp
+        n3.next=temp.next
+        temp.next.prev=n3
+        temp.next=n3
+        
+        
+    #\<-------------------------------------------------DELETION IN DOUBLY LINKEDLIST----------------------------------------------------------->|
+        
+                                                 #<--------DELETION AT BEGINING-------->
+            
+    def delete_begining(self):
+        temp=self.head
+        self.head=temp.next
+        temp.next=None
+        self.head.prev=None
+                    
+                                                  #<--------DELETION AT ENDING-------->
+    
+    def delete_ending(self):
+        temp=self.head.next
+        before=self.head
+        while temp:
+            temp=temp.next
+            before=before.next
+        temp.prev=None
+        before.next=None
+            
+                                                 #<--------DELETION AT POSITION-------->
+    
+    def delete_pos(self,pos):
+        temp=self.head.next
+        bef=self.head
+        for i in range(1,pos-1):
+            temp=temp.next
+            bef=bef.next
+        bef.next=temp.next
+        temp.next.prev=bef
+        temp.next=None
+        temp.prev=None
+        
+                                              #<---------SORTING OF DOUBLY LINKED LIST------>
+                                              
+   def sortList(self):    
+        #Check whether list is empty    
+        if(self.head == None):    
+            return;    
+        else:    
+            #Current will point to head    
+            current = self.head    
+            while(current.next != None):    
+                #Index will point to node next to current    
+                index = current.next;    
+                while(index != None):    
+                    #If current's data is greater than index's data, swap the data of current and index    
+                    if(current.data > index.data):    
+                        temp = current.data;    
+                        current.data = index.data;    
+                        index.data = temp;    
+                    index = index.next    
+                current = current.next    
+    
+l=DLL() # creating object of DLL class to access its methods
+n2=Node(20)
+l.head=n2
+n2.prev=None
+n2.next=n3
+n3=Node(30)
+n3.prev=n2
+n2.next=n3
+n4=Node(40)
+n4.prev=n3
+n3.next=n4
+n5=Node(50)
+n4.next=n5
+n5.prev=n4
+#l.insert_begining(10)
+#l.insert_ending(70)
+#l.insert_pos(4,60)
+#l.delete_begining()
+#l.delete_ending()
+#l.delete_pos(3)
+l.Display()
+    
+
